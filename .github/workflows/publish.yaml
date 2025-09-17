@@ -58,7 +58,7 @@ jobs:
         env:
           # For workflow_dispatch, only build the new Python version.
           CIBW_BUILD: ${{ inputs.python && format('{0}-*', inputs.python) || null }}
-          CIBW_SKIP: pp*
+          CIBW_SKIP: "['pp*', '*musllinux_riscv64']"
           CIBW_ARCHS_LINUX: auto aarch64 riscv64
           CIBW_ARCHS_MACOS: auto universal2
           CIBW_ARCHS_WINDOWS: auto ARM64
