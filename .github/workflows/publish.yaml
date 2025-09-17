@@ -52,9 +52,9 @@ jobs:
         if: runner.os == 'Linux'
         uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392 # v3.6.0
         with:
-          platforms: arm64
+          platforms: arm64,riscv64
       - run: echo "SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)" >> $GITHUB_ENV
-      - uses: pypa/cibuildwheel@faf86a6ed7efa889faf6996aa23820831055001a # v2.23.3
+      - uses: pypa/cibuildwheel@c923d83ad9c1bc00211c5041d0c3f73294ff88f6 # v3.1.4
         env:
           # For workflow_dispatch, only build the new Python version.
           CIBW_BUILD: ${{ inputs.python && format('{0}-*', inputs.python) || null }}
